@@ -1,18 +1,18 @@
 /**
  * ViewController.swift
- * Author: Keshav Dulal
- * StudentID: 301209947
- * Date: 17/09/2021
+ * Author        : Keshav Dulal
+ * StudentID   : 301209947
+ * Date           : 17/09/2021
  *
- * Author: Aishwarya Shrestha
- * StudentID: // TODO: add Aishwarya's Student ID
- * Date: 17/09/2021
+ * Author        : Aishwarya Shrestha
+ * StudentID   : 301138662
+ * Date            : 17/09/2021
  *
  * App Description:
  * A simple Calculator application
  *
  * Version:
- * 0.1
+ * 1
  */
 
 import UIKit
