@@ -38,30 +38,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         clearAll(); // clear everything by default
     }
-    
-    // Reset application
-    func clearAll(){
-        inputDisplayLabel.text=""
-        resultsLabel.text="0"
-        
-        isResultCalculated = false
-        isContinuousMode = false
-        isOperationSelected = false
-        isPlusMinusToggled = false
-    }
-    
-    func renderInputInView(value:String){
-        userInput = String(value)
-        inputDisplayLabel.text = inputDisplayLabel.text! + userInput
-        
-        if isOperationSelected{
-            secondOperand = secondOperand + userInput
-        }
-    }
 
     // Operands Click Handlers
     @IBAction func plusMinusOnClick(_ sender: Any) {
-        
         if isPlusMinusToggled {
             inputDisplayLabel.text = "+"
         }else{
@@ -69,7 +48,6 @@ class ViewController: UIViewController {
         }
         
         isPlusMinusToggled = !isPlusMinusToggled
-        
     }
     @IBAction func decimalOnClick(_ sender: Any) {
         renderInputInView(value:".")
@@ -129,29 +107,54 @@ class ViewController: UIViewController {
     }
     
     @IBAction func percentageOnClick(_ sender: Any) {
+        // Programmatically simulate divide by 100
+        operatorsHandler(value: "/")
+        renderInputInView(value:"100")
+        secondOperand = "100"
+        
+        calculateResults();
     }
     
+    @IBAction func equalsToOnClick(_ sender: Any) {
+      calculateResults()
+    }
+    
+    @IBAction func allClearOnClick(_ sender: Any) {
+        clearAll();
+    }
+    
+    // ---------- Custom Functions ---------
+    
+    // Input Renderer
+    func renderInputInView(value:String){
+        userInput = String(value)
+        inputDisplayLabel.text = inputDisplayLabel.text! + userInput
+        
+        // If user selects (or presses) a valid operation
+        // then subsequent inputs are stored as secondOperand
+        if isOperationSelected {
+            secondOperand = secondOperand + userInput
+        }
+    }
+    
+    // Handle Operators
     func operatorsHandler (value:String){
-        //         Enter Continouse Operation Mode
-                if isResultCalculated{
-                    isContinuousMode = true
-                    // extract previous result & save it as first operand
-                    firstOperand = resultsLabel.text!
-                }else{
-                    firstOperand=inputDisplayLabel.text!
-                }
-        
-        
+    // Enter Continouse Operation Mode
+        if isResultCalculated{
+            isContinuousMode = true
+            // extract previous result & save it as first operand
+            firstOperand = resultsLabel.text!
+        }else{
+            firstOperand=inputDisplayLabel.text!
+        }
         
         userSelectedOperation=value
         renderInputInView(value:value)
         isOperationSelected=true
-        
-
     }
     
-    // Results
-    @IBAction func equalsToOnClick(_ sender: Any) {
+    // Calcuate Final Results
+    func calculateResults(){
         var Results:Double?
         let firstOperandDouble = Double(firstOperand)
         let secondOperandDouble = Double(secondOperand)
@@ -168,8 +171,6 @@ class ViewController: UIViewController {
             Results=firstOperandDouble! * secondOperandDouble!
         case "/":
             Results=firstOperandDouble! / secondOperandDouble!
-//        case "%":
-//            Results=firstOperand! % secondOperand!
         default:
             Results=0
         }
@@ -186,10 +187,16 @@ class ViewController: UIViewController {
         firstOperand = ""
         secondOperand = ""
         userSelectedOperation = ""
-        
     }
     
-    @IBAction func allClearOnClick(_ sender: Any) {
-        clearAll();
+    // Reset application
+    func clearAll(){
+        inputDisplayLabel.text=""
+        resultsLabel.text="0"
+        
+        isResultCalculated = false
+        isContinuousMode = false
+        isOperationSelected = false
+        isPlusMinusToggled = false
     }
 }
