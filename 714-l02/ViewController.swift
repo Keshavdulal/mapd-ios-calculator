@@ -28,9 +28,10 @@ class ViewController: UIViewController {
     var secondOperand:String = ""
     var userSelectedOperation:String=""
     
-    var validOperatorEntered = false
-    var resultsDeclared = false
-//    var continuousOperationMode = false
+    var isOperationSelected = false
+    var isResultCalculated = false
+    var isContinuousMode = false
+    var isPlusMinusToggled = false
     
         
     override func viewDidLoad() {
@@ -43,21 +44,32 @@ class ViewController: UIViewController {
         inputDisplayLabel.text=""
         resultsLabel.text="0"
         
-//        continuousOperationMode = false
+        isResultCalculated = false
+        isContinuousMode = false
+        isOperationSelected = false
+        isPlusMinusToggled = false
     }
     
     func renderInputInView(value:String){
         userInput = String(value)
         inputDisplayLabel.text = inputDisplayLabel.text! + userInput
         
-        if validOperatorEntered{
+        if isOperationSelected{
             secondOperand = secondOperand + userInput
         }
     }
 
     // Operands Click Handlers
     @IBAction func plusMinusOnClick(_ sender: Any) {
-        renderInputInView(value:"-")
+        
+        if isPlusMinusToggled {
+            inputDisplayLabel.text = "+"
+        }else{
+            inputDisplayLabel.text = "-"
+        }
+        
+        isPlusMinusToggled = !isPlusMinusToggled
+        
     }
     @IBAction func decimalOnClick(_ sender: Any) {
         renderInputInView(value:".")
@@ -96,7 +108,6 @@ class ViewController: UIViewController {
     @IBAction func backOnClick(_ sender: Any) {
         var temp:String = inputDisplayLabel.text!
         temp = String(temp.dropLast())
-//        renderInputInView(value:temp)
         inputDisplayLabel.text = temp
     }
     
@@ -121,15 +132,22 @@ class ViewController: UIViewController {
     }
     
     func operatorsHandler (value:String){
-        firstOperand=inputDisplayLabel.text!
-        userSelectedOperation=value
-        validOperatorEntered=true
-        renderInputInView(value:value)
+        //         Enter Continouse Operation Mode
+                if isResultCalculated{
+                    isContinuousMode = true
+                    // extract previous result & save it as first operand
+                    firstOperand = resultsLabel.text!
+                }else{
+                    firstOperand=inputDisplayLabel.text!
+                }
         
-//         Enter Continouse Operation Mode
-//        if resultsDeclared{
-//            continuousOperationMode = true
-//        }
+        
+        
+        userSelectedOperation=value
+        renderInputInView(value:value)
+        isOperationSelected=true
+        
+
     }
     
     // Results
@@ -137,6 +155,9 @@ class ViewController: UIViewController {
         var Results:Double?
         let firstOperandDouble = Double(firstOperand)
         let secondOperandDouble = Double(secondOperand)
+        
+        print("->", firstOperand, secondOperand)
+        print("-->", firstOperandDouble, userSelectedOperation, secondOperandDouble)
         
         switch userSelectedOperation {
         case "+":
@@ -154,19 +175,18 @@ class ViewController: UIViewController {
         }
         
         // Result is declared
-        resultsDeclared = true
+        isResultCalculated = true
         // No operation is in active mode now
-        validOperatorEntered = false
+        isOperationSelected = false
         
         // Display results in view
         resultsLabel.text = String(Results!)
         
-        // Reset operation
-        userSelectedOperation=""
-        // Reset second operand
+        // Reset operation & operands
+        firstOperand = ""
         secondOperand = ""
-        // Pass Results to first operand to continue further operations
-        firstOperand = String(Results!)
+        userSelectedOperation = ""
+        
     }
     
     @IBAction func allClearOnClick(_ sender: Any) {
