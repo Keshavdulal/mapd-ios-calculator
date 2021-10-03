@@ -192,7 +192,6 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="addOnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E8u-Be-cxu"/>
                                                     <action selector="minusOnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h99-1N-1JX"/>
                                                 </connections>
                                             </button>
@@ -280,7 +279,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="decimalOnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tce-dp-N5d"/>
+                                                    <action selector="decimalOnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tw1-M5-xKk"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lja-Nv-nhH">
@@ -291,7 +290,6 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="decimalOnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fcy-6Z-69k"/>
                                                     <action selector="equalsToOnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nIp-br-4fq"/>
                                                 </connections>
                                             </button>
@@ -316,8 +314,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="calculatorInputsOngoing" destination="Esc-vs-LgY" id="Mxl-xQ-hcI"/>
-                        <outlet property="calculatorResults" destination="ihe-Pu-JAK" id="dSh-pm-SdY"/>
+                        <outlet property="inputDisplayLabel" destination="Esc-vs-LgY" id="Mxl-xQ-hcI"/>
+                        <outlet property="resultsLabel" destination="ihe-Pu-JAK" id="dSh-pm-SdY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
