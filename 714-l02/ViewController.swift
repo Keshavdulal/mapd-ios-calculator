@@ -17,6 +17,7 @@
 
 import UIKit
 
+// Default ViewController for our Calculator UI
 class ViewController: UIViewController {
     //    IBOutlets for labels
     @IBOutlet weak var inputDisplayLabel: UILabel!
@@ -33,7 +34,8 @@ class ViewController: UIViewController {
     var isContinuousMode = false
     var isPlusMinusToggled = false
     
-        
+     
+    // Built-in function to run tasks when view is loaded
     override func viewDidLoad() {
         super.viewDidLoad()
         clearAll(); // clear everything by default
@@ -49,63 +51,92 @@ class ViewController: UIViewController {
         
         isPlusMinusToggled = !isPlusMinusToggled
     }
+    
+    // handle decimal button on click
     @IBAction func decimalOnClick(_ sender: Any) {
         renderInputInView(value:".")
     }
+    
+    // handle zero button on click
     @IBAction func zeroOnClick(_ sender: Any) {
         renderInputInView(value:"0")
     }
+    
+    // handle button one on click
     @IBAction func oneOnClick(_ sender: Any) {
         renderInputInView(value:"1")
     }
+    
+    // handle button two on click
     @IBAction func twoOnClick(_ sender: Any) {
         renderInputInView(value:"2")
     }
+    
+    // handle button three on click
     @IBAction func threeOnClick(_ sender: Any) {
         renderInputInView(value:"3")
     }
+    
+    // handle button four on click
     @IBAction func fourOnClick(_ sender: Any) {
         renderInputInView(value:"4")
     }
+    
+    // handle button five on click
     @IBAction func fiveOnClick(_ sender: Any) {
         renderInputInView(value:"5")
     }
+    
+    // handle button six on click
     @IBAction func sixOnClick(_ sender: Any) {
         renderInputInView(value:"6")
     }
+    
+    // handle button seven on click
     @IBAction func sevenOnClick(_ sender: Any) {
         renderInputInView(value:"7")
     }
+    
+    // handle button eight on click
     @IBAction func eightOnClick(_ sender: Any) {
         renderInputInView(value:"8")
     }
+    
+    // handle button nine on click
     @IBAction func nineOnClick(_ sender: Any) {
         renderInputInView(value:"9")
     }
     
+    // handle back button on click
     @IBAction func backOnClick(_ sender: Any) {
         var temp:String = inputDisplayLabel.text!
         temp = String(temp.dropLast())
         inputDisplayLabel.text = temp
     }
     
-    // Operators Click Handlers
+    // ------------ Operation Buttons Handler ------------
+    
+    // handle addition button on click
     @IBAction func addOnClick(_ sender: Any) {
         operatorsHandler(value:"+")
     }
     
+    // handle minus button on click
     @IBAction func minusOnClick(_ sender: Any) {
         operatorsHandler(value:"-")
     }
 
+    // handle multiply button on click
     @IBAction func multiplyOnClick(_ sender: Any) {
         operatorsHandler(value:"*")
     }
     
+    // handle divide button on click
     @IBAction func divideOnClick(_ sender: Any) {
         operatorsHandler(value:"/")
     }
     
+    // handle percentage button on click
     @IBAction func percentageOnClick(_ sender: Any) {
         // Programmatically simulate divide by 100
         operatorsHandler(value: "/")
@@ -115,10 +146,12 @@ class ViewController: UIViewController {
         calculateResults();
     }
     
+    // handle equals-to button on click
     @IBAction func equalsToOnClick(_ sender: Any) {
       calculateResults()
     }
     
+    // handle All-clear button on click
     @IBAction func allClearOnClick(_ sender: Any) {
         clearAll();
     }
@@ -137,7 +170,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // Handle Operators
+    // Handle Operators on click
     func operatorsHandler (value:String){
     // Enter Continouse Operation Mode
         if isResultCalculated{
@@ -189,7 +222,7 @@ class ViewController: UIViewController {
         userSelectedOperation = ""
     }
     
-    // Reset application
+    // Reset the application state
     func clearAll(){
         inputDisplayLabel.text=""
         resultsLabel.text="0"
