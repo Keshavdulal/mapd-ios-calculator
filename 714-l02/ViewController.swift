@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     var isResultCalculated = false
     var isContinuousMode = false
     var isPlusMinusToggled = false
+    var isScientificMode = false
     
      
     // Built-in function to run tasks when view is loaded
@@ -114,6 +115,40 @@ class ViewController: UIViewController {
         inputDisplayLabel.text = temp
     }
     
+    // Scientific Buttons
+     @IBAction func sinOnClick(_ sender: Any) {
+        operatorsHandler(value:"sin")
+        isScientificMode=true
+     }
+     
+     @IBAction func cosOnClick(_ sender: Any) {
+        operatorsHandler(value:"cos")
+        isScientificMode=true
+     }
+     
+     @IBAction func tanOnClick(_ sender: Any) {
+        operatorsHandler(value:"tan")
+        isScientificMode=true
+     }
+     
+     @IBAction func piOnClick(_ sender: Any) {
+        let piStr = String(Double.pi)
+        renderInputInView(value:piStr)
+     }
+     
+     @IBAction func randOnClick(_ sender: Any) {
+//        let randomStr = String()
+//        renderInputInView(value:randomStr)
+     }
+     
+     @IBAction func twoRootXOnClick(_ sender: Any) {
+ //        renderInputInView(value:"²√x")
+     }
+     
+     @IBAction func xSquareOnClick(_ sender: Any) {
+ //        renderInputInView(value:"x²")
+     }
+    
     // ------------ Operation Buttons Handler ------------
     
     // handle addition button on click
@@ -163,6 +198,10 @@ class ViewController: UIViewController {
         userInput = String(value)
         inputDisplayLabel.text = inputDisplayLabel.text! + userInput
         
+        // dummy
+//        if isScientificMode {
+//            secondOperand = "0"
+//        }
         // If user selects (or presses) a valid operation
         // then subsequent inputs are stored as secondOperand
         if isOperationSelected {
@@ -192,8 +231,8 @@ class ViewController: UIViewController {
         let firstOperandDouble = Double(firstOperand)
         let secondOperandDouble = Double(secondOperand)
         
-        print("->", firstOperand, secondOperand)
-        print("-->", firstOperandDouble, userSelectedOperation, secondOperandDouble)
+//        print("->", firstOperand, secondOperand)
+//        print("-->", firstOperandDouble, userSelectedOperation, secondOperandDouble)
         
         switch userSelectedOperation {
         case "+":
@@ -204,6 +243,14 @@ class ViewController: UIViewController {
             Results=firstOperandDouble! * secondOperandDouble!
         case "/":
             Results=firstOperandDouble! / secondOperandDouble!
+        case "sin":
+            Results=sin((firstOperandDouble! * Double.pi) / 180)
+        case "cos":
+            Results=cos((firstOperandDouble! * Double.pi) / 180)
+        case "tan":
+            Results=tan((firstOperandDouble! * Double.pi) / 180)
+            
+            
         default:
             Results=0
         }
@@ -231,5 +278,6 @@ class ViewController: UIViewController {
         isContinuousMode = false
         isOperationSelected = false
         isPlusMinusToggled = false
+        isScientificMode = false
     }
 }
