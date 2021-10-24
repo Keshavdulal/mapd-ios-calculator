@@ -115,7 +115,7 @@ class ViewController: UIViewController {
         inputDisplayLabel.text = temp
     }
     
-    // Scientific Buttons
+    // ------------ Scientific Buttons ------------
      @IBAction func sinOnClick(_ sender: Any) {
         operatorsHandler(value:"sin")
         isScientificMode=true
@@ -137,16 +137,18 @@ class ViewController: UIViewController {
      }
      
      @IBAction func randOnClick(_ sender: Any) {
-//        let randomStr = String()
-//        renderInputInView(value:randomStr)
+        let randomStr = String(Double.random(in: 0...1))
+        renderInputInView(value:randomStr)
      }
      
      @IBAction func twoRootXOnClick(_ sender: Any) {
- //        renderInputInView(value:"²√x")
+        operatorsHandler(value:"²√")
+        isScientificMode=true
      }
      
      @IBAction func xSquareOnClick(_ sender: Any) {
- //        renderInputInView(value:"x²")
+        operatorsHandler(value:"²")
+        isScientificMode=true
      }
     
     // ------------ Operation Buttons Handler ------------
@@ -223,7 +225,7 @@ class ViewController: UIViewController {
         userSelectedOperation=value
         renderInputInView(value:value)
         isOperationSelected=true
-    }
+        }
     
     // Calcuate Final Results
     func calculateResults(){
@@ -244,11 +246,16 @@ class ViewController: UIViewController {
         case "/":
             Results=firstOperandDouble! / secondOperandDouble!
         case "sin":
-            Results=sin((firstOperandDouble! * Double.pi) / 180)
+            Results=sin((secondOperandDouble! * Double.pi) / 180)
         case "cos":
-            Results=cos((firstOperandDouble! * Double.pi) / 180)
+            Results=cos((secondOperandDouble! * Double.pi) / 180)
         case "tan":
-            Results=tan((firstOperandDouble! * Double.pi) / 180)
+            Results=tan((secondOperandDouble! * Double.pi) / 180)
+        case "²": //xsquare
+            Results=firstOperandDouble! * firstOperandDouble!
+        case "²√":
+            Results=sqrt(secondOperandDouble!)
+        
             
             
         default:

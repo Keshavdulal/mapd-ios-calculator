@@ -126,11 +126,6 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <variation key="default">
-                                            <mask key="subviews">
-                                                <exclude reference="0z1-P0-icw"/>
-                                            </mask>
-                                        </variation>
                                         <variation key="heightClass=compact-widthClass=regular">
                                             <mask key="subviews">
                                                 <include reference="0z1-P0-icw"/>
@@ -208,11 +203,6 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <variation key="default">
-                                            <mask key="subviews">
-                                                <exclude reference="g31-zQ-EyV"/>
-                                            </mask>
-                                        </variation>
                                         <variation key="heightClass=compact-widthClass=regular">
                                             <mask key="subviews">
                                                 <include reference="g31-zQ-EyV"/>
@@ -290,11 +280,6 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <variation key="default">
-                                            <mask key="subviews">
-                                                <exclude reference="pld-tH-pzv"/>
-                                            </mask>
-                                        </variation>
                                         <variation key="heightClass=compact-widthClass=regular">
                                             <mask key="subviews">
                                                 <include reference="pld-tH-pzv"/>
@@ -372,11 +357,6 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <variation key="default">
-                                            <mask key="subviews">
-                                                <exclude reference="98b-JH-EmF"/>
-                                            </mask>
-                                        </variation>
                                         <variation key="heightClass=compact-widthClass=regular">
                                             <mask key="subviews">
                                                 <include reference="98b-JH-EmF"/>
@@ -455,11 +435,6 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <variation key="default">
-                                            <mask key="subviews">
-                                                <exclude reference="0gF-V7-EHm"/>
-                                            </mask>
-                                        </variation>
                                         <variation key="heightClass=compact-widthClass=regular">
                                             <mask key="subviews">
                                                 <include reference="0gF-V7-EHm"/>
